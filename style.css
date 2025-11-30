@@ -1,0 +1,256 @@
+/* 1. Импортируем шрифт Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- Глобальные настройки --- */
+:root {
+    --bg-color: #121212; 
+    --surface-color: #1e1e1e; 
+    --primary-color: #00aaff; 
+    --text-color: #e0e0e0; 
+    --header-color: #ffffff; 
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    
+    /* !!! ГЛАВНОЕ ИСПРАВЛЕНИЕ: Убирает горизонтальную прокрутку !!! */
+    overflow-x: hidden; 
+}
+
+h1, h2, h3 {
+    color: var(--header-color);
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 2.5em;
+    border-bottom: 3px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 30px;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Навигация --- */
+nav {
+    background-color: rgba(30, 30, 30, 0.9);
+    padding: 15px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #333;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+nav ul li a {
+    color: var(--header-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Hero (Главный экран) --- */
+.full-screen-hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Картинка на фоне */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 4.5em;
+    margin: 0;
+    font-weight: 700;
+}
+.hero-content p {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin: 10px 0 30px;
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+}
+.cta-button:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 170, 255, 0.5);
+}
+
+/* --- Секции --- */
+section {
+    background-color: var(--surface-color);
+    margin-bottom: 30px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid #333;
+    overflow: hidden; /* Дополнительная защита от вылезания контента */
+}
+
+/* --- Анимация (WOW эффект) --- */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-50px); /* Уменьшил сдвиг, чтобы было аккуратнее */
+    transition: all 1s ease-out;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+/* Чередование выезда (слева/справа) */
+section:nth-child(even).hidden {
+    transform: translateX(50px);
+}
+section:nth-child(even).show {
+    transform: translateX(0);
+}
+
+/* --- Статьи внутри блоков 8 --- */
+article {
+    background-color: var(--bg-color);
+    padding: 20px;
+    margin-top: 15px;
+    border-left: 5px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    border-top: 1px solid #333;
+    padding: 30px;
+}
+
+/* --- Сетка портфолио --- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 170, 255, 0.3);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.btn-details {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-details:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 992px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 3.5em;
+    }
+    .hero-content p {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 576px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    nav ul li {
+        margin: 0 10px;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    section {
+        padding: 25px;
+    }
+}
